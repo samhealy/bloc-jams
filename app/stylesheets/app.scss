@@ -15,6 +15,7 @@ body.landing {
 }
 
 .hero-content {
+<<<<<<< HEAD
 	background: #2F1D57;
 	padding: 100px 0;
 }
@@ -42,9 +43,6 @@ body.landing {
 .selling-points .point p {
 	font-size: 14px;
 }
-
-// medium-purple: #7B46A3 - 123, 70, 163
-//
  
 .player-header-nav {
    background-color: rgba(123, 70, 163, .9);
@@ -56,4 +54,44 @@ body.landing .navbar {
 
 .selling-points {
 	padding: 100px 0;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  margin-bottom: 50px;
+  font-weight: 300;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  margin-bottom: 50px;
+  font-weight: 300;
+}
+
+.selling-points {
+    padding: 100px;
+  }
+ 
+.selling-points .point {
+  width: 32%;
+  float: left;
+  padding: 0 0.5%;
+}
+ 
+.selling-points .point h5 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  height: 85px;
+}
+ 
+.selling-points .point p {
+  font-size: 14px;
+}
+
+.nav-bar {
+  background: #2c1231;
+  height: 90px;
+  padding: 0 100px;
 }
