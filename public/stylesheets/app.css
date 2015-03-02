@@ -4,32 +4,20 @@ html {
 body {
   font-family: 'Open Sans';
   color: white;
-<<<<<<< HEAD
-  min-height: 100%;
-  background: -webkit-radial-gradient(#2b1339, #380c77);
-  background: radial-gradient(#2b1339, #380c77); }
-=======
   min-height: 100%; }
->>>>>>> basic-css
 
 body.landing {
   background: #5b5579; }
 
 .hero-content {
   background: #2f1d57;
-<<<<<<< HEAD
-  padding: 100px 0; }
-=======
   padding: 100px; }
->>>>>>> basic-css
 
 .hero-content h1 {
   font-size: 70px;
   margin-bottom: 50px;
   font-weight: 300; }
 
-<<<<<<< HEAD
-=======
 .hero-content h1 {
   font-size: 70px;
   margin-bottom: 50px;
@@ -38,7 +26,6 @@ body.landing {
 .selling-points {
   padding: 100px; }
 
->>>>>>> basic-css
 .selling-points .point {
   width: 32%;
   float: left;
@@ -54,21 +41,10 @@ body.landing {
 .selling-points .point p {
   font-size: 14px; }
 
-<<<<<<< HEAD
-.player-header-nav {
-  background-color: rgba(123, 70, 163, 0.9); }
-
-body.landing .navbar {
-  margin-bottom: 0; }
-
-.selling-points {
-  padding: 100px 0; }
-=======
 .nav-bar {
   background: #2c1231;
   height: 90px;
   padding: 0 100px; }
->>>>>>> basic-css
 
 
 /*# sourceMappingURL=app.css.map*/
