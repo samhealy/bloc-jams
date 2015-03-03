@@ -34,4 +34,3 @@ if (document.URL.match(/\/collection.html/)) {
 		updateCollectionView();
 	});
 }
-
