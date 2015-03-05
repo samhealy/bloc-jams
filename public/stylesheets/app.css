@@ -237,13 +237,11 @@ body {
   background: -webkit-radial-gradient(#2b1339, #380c77);
   background: radial-gradient(#2b1339, #380c77);
   padding-bottom: 150px; }
-
-body.landing {
-  background: #5b5579;
-  padding-bottom: 0; }
-
-body.landing .navbar {
-  margin-bottom: 0; }
+  body .landing {
+    background: #5b5579;
+    padding-bottom: 0; }
+    body .landing .navbar {
+      margin-bottom: 0; }
 
 .player-header-nav {
   background-color: rgba(123, 70, 163, 0.9); }
