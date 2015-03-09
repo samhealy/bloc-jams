@@ -3,15 +3,29 @@
 //require('./collection');
 //require('./profile');
 
-angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {
+blocJams = angular.module('BlocJams', ['ui.router']);
 
-	$scope.subText = "Turn the music up!";
+blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+   $locationProvider.html5Mode(true);
+ 
+   $stateProvider.state('landing', {
+     url: '/',
+     controller: 'Landing.controller',
+     templateUrl: '/templates/landing.html'
+   });
+ }]);
+ 
+ // This is a cleaner way to call the controller than crowding it on the module definition.
+ blocJams.controller('Landing.controller', ['$scope', function($scope) {
 
-	$scope.subTextClicked = function() {
-	    $scope.subText += '!';
-	};
 
-	$scope.albumURLs = [
+$scope.subText = "Turn the music up!";
+
+$scope.subTextClicked = function() {
+   $scope.subText += '!';
+};
+
+$scope.albumURLs = [
      '/images/album-placeholders/album-1.jpg',
      '/images/album-placeholders/album-2.jpg',
      '/images/album-placeholders/album-3.jpg',
