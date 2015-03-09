@@ -292,7 +292,6 @@ angular.module('BlocJams', []).controller('Landing.controller', ['$scope', funct
      '/images/album-placeholders/album-9.jpg',
    ];
 
-
 }]);
 });
 
