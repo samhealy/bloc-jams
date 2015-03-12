@@ -115,5 +115,4 @@ $scope.albumURLs = [
     $scope.pauseSong = function(song) {
       playingSong = null;
     };
-
  }]);
