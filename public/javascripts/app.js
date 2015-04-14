@@ -315,8 +315,8 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
 
   $stateProvider.state('song', {
     url: '/song',
-// controller: 'Landing.controller',
-templateUrl: '/templates/song.html'
+  // controller: 'Landing.controller',
+  templateUrl: '/templates/song.html'
 });
 
 }]);
@@ -391,9 +391,44 @@ blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope
 
 blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', function($scope, SongPlayer) {
   $scope.songPlayer = SongPlayer;
+
+  SongPlayer.onTimeUpdate(function(event, time){
+     $scope.$apply(function(){
+       $scope.playTime = time;
+     });
+  });
 }]);
 
-blocJams.service('SongPlayer', function() {
+blocJams.filter('timecode', function(){
+   return function(seconds) {
+     seconds = Number.parseFloat(seconds);
+ 
+     // Returned when no time is provided.
+     if (Number.isNaN(seconds)) {
+       return '-:--';
+     }
+ 
+     // make it a whole number
+     var wholeSeconds = Math.floor(seconds);
+ 
+     var minutes = Math.floor(wholeSeconds / 60);
+ 
+     remainingSeconds = wholeSeconds % 60;
+ 
+     var output = minutes + ':';
+ 
+     // zero pad seconds, so 9 seconds should be :09
+     if (remainingSeconds < 10) {
+       output += '0';
+     }
+ 
+     output += remainingSeconds;
+ 
+     return output;
+   }
+})
+
+blocJams.service('SongPlayer', ['$rootScope', function($rootScope) {
   var currentSoundFile = null;
 
   var trackIndex = function(album, song) {
@@ -441,21 +476,31 @@ blocJams.service('SongPlayer', function() {
          currentSoundFile.setTime(time);
        }
     },
+
+    onTimeUpdate: function(callback) {
+      return $rootScope.$on('sound:timeupdate', callback);
+    },
+
     setSong: function(album, song) {
       if (currentSoundFile) {
         currentSoundFile.stop();
       }
       this.currentAlbum = album;
       this.currentSong = song;
+
       currentSoundFile = new buzz.sound(song.audioUrl, {
         formats: [ "mp3" ],
         preload: true
       });
 
+      currentSoundFile.bind('timeupdate', function(e){
+        $rootScope.$broadcast('sound:timeupdate', this.getTime());
+      });
+
       this.play();
     }
-  };
-});
+  }
+}]);
 
 blocJams.directive('slider', ['$document', function($document){
 
@@ -538,15 +583,13 @@ blocJams.directive('slider', ['$document', function($document){
       });
     };
 
-    // placement?
-
     var notifyCallback = function(newValue) {
-         if(typeof scope.onChange === 'function') {
-           scope.onChange({value: newValue});
-         }
-       };
+       if(typeof scope.onChange === 'function') {
+         scope.onChange({value: newValue});
+       }
+    };
 
-//cleanup
+    //cleanup
     $document.bind('mouseup.thumb', function(){
       $document .unbind('mousemove.thumb');
       $document.unbind('mouseup.thumb');
